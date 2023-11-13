@@ -1,5 +1,5 @@
 
-//
+//Juhan Johannes Raudsik, 2023
 const board = document.getElementById('board');
 let currentPlayer = 'X';
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
