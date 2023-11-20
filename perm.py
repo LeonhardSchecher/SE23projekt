@@ -30,71 +30,96 @@ def cross_check(arr_2d, win_val):
 def game_check(arr_2d, win_val):
     return vert_check(arr_2d, win_val) or vert_check(trans(arr_2d), win_val) or cross_check(arr_2d, win_val) or cross_check(flip_v(arr_2d), win_val)
 
-
-X_VAL = 1
-O_VAL = -1
-
-base_0 = [
+def base_board():
+    return [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
 ]
 
-base_1 = deepcopy(base_0)
-base_1[1][1] = X_VAL
-base_2 = deepcopy(base_0)
-base_2[0][1] = X_VAL
-base_3 = deepcopy(base_0)
-base_3[0][0] = X_VAL
 
-def abc():
-    a = [
-    [1, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-    ]
-    return a
-#VB peab tegema vaid käikudega
-#def cycle_mvs(done_mvs, illegal:set, player):
-#    all_possible = {(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)}
-#    possible = all_possible-illegal
-#    dissallow = []
-#    step = []
-#    cln = []
-#    print(possible)
-#    for r_c in possible:
-#        step.append()
+X_VAL = 'X'
+O_VAL = 'O'
+CASE1 = deepcopy(base_board())
+CASE1[0][0] = X_VAL
+
+def gen_board(moves):
+    board = base_board()
+    for move in moves:
+        player, r, c = move
+        board[r][c] = player
+    return board
 
 
-def cycle(start_array, illegal, player):
-    all_possible = {(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)}
-    possible = all_possible-set(illegal)
-    dissallow = list(illegal)
-    step = []
-    for r_c in possible:
-        row, col = r_c
-        a = deepcopy(start_array)
-        a[row][col] = player
-        dissallow.append(r_c)
-        step.append(a)
-        del a
-    return step, dissallow
 
+class Cycle:
+    def __init__(self, parent, my_way:list = False) -> None:
+        self.parent = False
+        self.way = deepcopy(my_way)
+        self.branches = []
+        self.has_won = False
+        self.player_val = X_VAL if my_way[0][0] == O_VAL else O_VAL
+        self.allow = {(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)} - {self.way[-1]}
+        if parent:
+            self.has_won = parent.has_won
+            self.allow = parent.allow - {self.way[-1]}
+            self.parent = parent
+            self.way = deepcopy(self.parent.way)
+            self.way.append(deepcopy(my_way))
+            self.player_val = X_VAL if self.parent.player_val == O_VAL else O_VAL
+        if len(self.allow):
+            self.check_vicory()
+        else:
+            self.has_won = True
 
-def generate_moves(seed):
-    seed = [deepcopy(seed)]
-    moves, not_allow = 
+    def gen_game_state(self):
+        board = base_board()
+        
+        for state in self.way:
+            player, row_col = state
+            row, col = row_col
+            board[row][col] = player
+        return board
     
 
+    def generate_braches(self):
+        if self.has_won:
+            print("Can't generate new branches")
+            return False
+        
+        for row_col in self.allow:
+            self.branches.append(Cycle(self, (self.player_val, row_col)))
+    
+    def check_vicory(self):
+        player = X_VAL if self.player_val == O_VAL else O_VAL
+        if game_check(self.gen_game_state(), player):
+            self.has_won = True
+            return True
+        return False
+        
+parent = [Cycle(False, [(X_VAL, (0, 0))])]
+parent[0].generate_braches()
+parent = parent[0].branches 
 
+done = []
+while len(parent):
+    children = []
+    for case in parent:
+        case.generate_braches()
+        children.extend(case.branches)
+    parent = children
+    i = 0
+    while i < len(parent):
+        if parent[i].has_won == True:
+            done.append(parent.pop(i))
+            i -= 1
+        i += 1
+    print(len(done))
 
-def print(states, n):
-    # TESTIMISEKS, printimine
-    for i, state in enumerate(states):
-        for row in state:
-            print(row)
-        print(n[i])
-        print("--------------------")
-
-def do(array2D):
-    pass
+#for case in done:
+#    for n in case.gen_game_state()[::-1]:
+#        print(n)
+#    print("_____________")
+import json
+with open("test_dta.json", 'w') as f:
+    json.dump([branch for branch in [case.gen_game_state() for case in done]], f)
