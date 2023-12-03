@@ -3,61 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "history.css">
   <title>Tic Tac Toe Ajalugu</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
-      color: #ecf0f1;
-      margin: 20px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #3498db;
-    }
-
-    p {
-      text-align: justify;
-    }
-
-    .back-link {
-      display: block;
-      margin-top: 20px;
-      text-align: center;
-      text-decoration: none;
-      color: #ecf0f1;
-      background-color: #3498db;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .back-link:hover {
-      background-color: #2980b9;
-    }
-
-    .tic-tac-toe-image {
-      max-width: 100%;
-      height: auto;
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
-  <h1>Tic Tac Toe Ajalugu</h1>
-  <p>
-    Tic Tac Toe, tuntud ka kui "X ja O" või "kolm rida", on mäng, kus kaks mängijat vaheldumisi märgivad X ja O 3x3 võrgustikku. Mängu eesmärk on saada kolm oma märki järjestikku - horisontaalselt, vertikaalselt või diagonaalselt.
+  
+  <div id="hddr">
+    <div id = "backxyz">
+      <div class="brd">
+
+        <a id = "back_logo" href="mng.html">
+        <svg width="100%" height="100%">
+          <line x1="33%" y1="0%" x2="33%" y2="100%"/>
+          <line x1="66%" y1="0%" x2="66%" y2="100%"/>
+          <line x1="0%" y1="33%" x2="100%" y2="33%"/>
+          <line x1="0%" y1="66%" x2="100%" y2="66%"/>
+
+          <g class="x" >
+            <line x1="0%" y2="30%" y1="0%" x2="32%"></line>
+            <line x1="0%" y1="30%" x2="32%" y2="0%"></line>
+
+            <line x1="33%" y2="66%" y1="33%" x2="66%"></line>
+            <line x1="65%" y1="33%" x2="33%" y2="66%"></line>
+          </g>
+          <circle class="o" cx="50%" cy="15%" r="13%" stroke="#bee9e8" stroke-width="5" fill="none" />
+        </svg>
+        </a>
+      </div>
+      <br>
+      <br>
+      <h4>Tagasi</h4>
+    </div>
+    <h1>Trips-traps-trulli ajalugu</h1>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <h3>PLACE Holder</h3>
+  <p>tekst
+    teksttekstteksttekstteksttekst tekst  tekst tekst 
+    tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst 
+    tekst.  tekst tekst tekst tekst tekst tekst tekst tekst.  tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst!
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst!
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst!
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst tekst tekst tekst tekst
+    tekst tekst tekst tekst tekst tekst!
   </p>
-  <p>
-    Mäng on pärit antiikajast, kus seda mängiti liival või savilaudadel. Hiljem, 20. sajandi alguses, ilmus mäng ka Põhja-Ameerikas, kus see sai populaarseks nime all "Tic Tac Toe".
-  </p>
-  <p>
-    Ajaloo jooksul on mäng läbinud mitmeid variatsioone ja on saanud ka digitaalsete versioonide kujul laialt levinud. Tänapäeval mängitakse Tic Tac Toed mitmel platvormil, sealhulgas arvutites, nutitelefonides ja veebisaitidel.
-  </p>
-  <img src="https://i.ibb.co/qNVx3db/23145.jpg" alt="23145" class="tic-tac-toe-image">
-  <a href="index.html" class="back-link">Tagasi mängu juurde</a>
+  
+
+  <div class="patterns">
+    <svg width="100%" height="100%">
+      <defs>
+        <pattern id="polka-dots" x="0" y="0" width="93" height="93" patternUnits="userSpaceOnUse">
+          <circle cx="67" cy="22" r="20" />
+          <line class = "backround_X" x1 = "0" y1 = "0" x2 = "40" y2 ="40"/>
+          <line class = "backround_X" x1 = "40" y1 = "0" x2 = "0" y2 ="40"/>
+        </pattern>
+      </defs>
+
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#polka-dots)" />
+    </svg>
+  </div>
+
 </body>
 </html>
 
