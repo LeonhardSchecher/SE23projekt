@@ -27,6 +27,13 @@ function checkTie() {
 }
 
 function handleClick(index) {
+    if (!gameActive){
+        
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
+        renderBoard();
+        
+    }
     if (!gameActive || gameBoard[index] !== '') {
         return;
     }
