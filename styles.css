@@ -4,7 +4,9 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    overflow-x: hidden;
     background: rgb(4.4, 0, 22.7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
@@ -17,6 +19,7 @@ body {
     width: 100vw;
     z-index: -2;
     opacity: 0.33;
+    rotate: -4deg;
   }
   
   circle {
