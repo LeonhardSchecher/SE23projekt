@@ -56,7 +56,15 @@ function handleClick(index) {
 function renderBoard() {
     board.innerHTML = '';
     gameBoard.forEach((cell, index) => {
+        let color
+        if (cell === "X"){
+            clr = "#d17777";
+
+        }else{
+            clr = "#bee9e8";
+        }
         const cellElement = document.createElement('div');
+        cellElement.style.color =  clr
         cellElement.classList.add('cell');
         cellElement.textContent = cell;
         cellElement.addEventListener('click', () => handleClick(index));
