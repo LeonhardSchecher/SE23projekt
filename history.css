@@ -73,7 +73,7 @@ li a{
   z-index: 20;
   stroke-width: 3px;
   transition: transform 0.5s ease-in-out;
-  rotate: 14deg;
+  transform: rotate(14deg);
   cursor: pointer;
   min-width: 77px;
   min-height: 77px;
@@ -117,9 +117,9 @@ li a{
 .patterns {
   position: absolute;
   top: 0px;
-  scale:1.8;
+  
   left: -10px;
-  rotate: 15deg;
+  transform: scale(1.8) rotate(15deg);
   height: 101vh;
   width: 101vw;
   z-index: -2;
