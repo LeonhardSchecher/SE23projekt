@@ -19,6 +19,7 @@ body {
     width: 100vw;
     z-index: -2;
     opacity: 0.33;
+    rotate: -4deg;
   }
   
   circle {
